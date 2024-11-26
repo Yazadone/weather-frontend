@@ -53,7 +53,7 @@ const DataProvider = ({ children }) => {
     }
 
     return (
-        <DataContext.Provider value={{ searchData,setsearchData,cityName,setselectedCity,selectedCity }}>
+        <DataContext.Provider value={{ searchData,setsearchData,cityName,setselectedCity,selectedCity, cityWeatherData }}>
             {children}
         </DataContext.Provider>
     );
