@@ -9,7 +9,7 @@ const api = process.env.OpenWeather_API
 
 app.use(
     cors({
-        origin: "https://localhost:3001"
+        origin: "http://localhost:3000"
 })
 )
 
@@ -22,9 +22,9 @@ app.get("/api/geo", async (req, res) => {
 
 app.get("/api/weather", async (req, res) => {
     const {lat, lon, units="imperial"} = req.query;
-    const response = await fetch('https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${api}');
+    const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${api}`);
     const data = await response.json();
     res.json(data)
 });
 
-app.listen(3000, () => console.log("Server is running on port 3000"));
+app.listen(5000, () => console.log("Server is running on port 5000"));
