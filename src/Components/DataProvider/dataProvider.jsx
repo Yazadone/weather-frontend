@@ -8,7 +8,8 @@ const DataProvider = ({ children }) => {
     const [cityName, setcityName] = useState([])
     const [selectedCity, setselectedCity] = useState([])
     const [cityWeatherData, setcityWeatherData] = useState()
-
+    
+    // Fetching cities using useEffect
     useEffect(() => {
         if (searchData?.trim() != "") {
             fetchData()
@@ -16,11 +17,15 @@ const DataProvider = ({ children }) => {
             setcityName([])
         }
     },[searchData])
+
+    // Fetching city weather data
     useEffect(() => {
         if (selectedCity?.length > 0) {
             fetchWeatherData()
         } 
     },[selectedCity])
+
+    // Function to fetch weather data
     const fetchWeatherData = async() => {
         try {
             const res = await fetch(`http://localhost:5000/api/weather?lat=${selectedCity[0]?.latitude}&lon=${selectedCity[0]?.longitude}`)
@@ -32,12 +37,14 @@ const DataProvider = ({ children }) => {
             console.log(e.error)
         } 
     }
+
+    // Function to fetch cities name
     const fetchData = async() => {
         try {
             const res = await fetch(`http://localhost:5000/api/geo?city=${searchData}`)
             const data = await res.json()
             console.log("Data",data)
-            const cities = data?.map((item, index) => {
+            const cities = data?.map((item, index) => {   //Saving the city object from data into cities variable
                 return {
                     id: index,
                     name: `${item?.name}, ${item?.state}, ${item?.country}`,
