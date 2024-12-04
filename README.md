@@ -2,12 +2,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Prerequisite
+Make sure you have installed the node library
+
+Login to https://openweathermap.org/api and get your API key, proceed to make an .env file in weather backend directory.
+Paste the following line in the .env file: 
+OpenWeather_API="Enter your API key here"
+
 ## Available Scripts
 Before starting project, run the following command to install the necessary modules
 
 ### `npm install` 
 
-In the project directory, you can run:
+Navigate to the weather backend directory, and run the following command to start the backend server:
+
+### `node server.mjs`
+
+In the project directory, you can run the following command to start the frontend:
 
 ### `npm start`
 
