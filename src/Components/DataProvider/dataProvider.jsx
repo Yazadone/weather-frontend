@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+ import { createContext, useState, useEffect } from 'react';
 
 
 const DataContext = createContext();
@@ -34,7 +34,7 @@ const DataProvider = ({ children }) => {
             console.log(cityWeatherData)
 
         } catch(e){
-            console.log(e.error)
+            console.log(e)
         } 
     }
 
@@ -55,7 +55,7 @@ const DataProvider = ({ children }) => {
 
             setcityName(cities);
         } catch(e){
-            console.log(e.error)
+            console.log(e)
         }   
     }
 
