@@ -1,30 +1,32 @@
-import React, {useContext,useState,} from "react";
+import React, { useContext, useState } from "react";
 import { DataContext } from "../DataProvider/dataProvider";
-
+import { Link } from "react-router";
+import styles from './weatherdetails.module.css';
 
 function WeatherDetails() {
-  const { searchData,setsearchData,cityName,setselectedCity,cityWeatherData } = useContext(DataContext);
-    //This sets fahrenheit to default
-    const [unit, setUnit] = useState("imperial");
+  const { selectedCity, cityWeatherData } = useContext(DataContext);
+  // This sets fahrenheit to default
+  const [unit, setUnit] = useState("imperial");
 
-    //This converts fahrenheit to celsius 
-    const celsius = (liveTemp) => ((liveTemp - 32) * 5) / 9;
-    const time = (dateTime) => new Date(dateTime * 1000).toLocaleTimeString();
+  // This converts fahrenheit to celsius
+  const celsius = (liveTemp) => Math.round(((liveTemp - 32) * 5) / 9);
+  const time = (dateTime) => new Date(dateTime * 1000).toLocaleTimeString();
 
-    //allows users to change units
-    const changeUnit = () => {
-      setUnit(unit === "imperial" ? "metric" : "imperial");
-    };
+  // Allows users to change units
+  const changeUnit = () => {
+    setUnit(unit === "imperial" ? "metric" : "imperial");
+  };
 
-    console.log("Selected City:", selectedCity);
-    console.log("City Weather Data:", cityWeatherData);
-   
-    return (
-      <div>
-        <h2>
-          {selectedCity?.length > 0 ? `Weather information for ${selectedCity[0]?.name || "this location"}` : "No city selected, please search and select a city."}</h2>
-        {cityWeatherData?.current ? (
-          <div>
+  return (
+    <div className={styles.container}>
+      <div className={styles.heading}>
+      <h2>
+        {selectedCity?.length > 0 ? `Weather information for ${selectedCity[0]?.name || "this location"}` : "No city selected, please search and select a city."}
+      </h2>
+      </div>
+      {cityWeatherData?.current ? (
+        <Link to="/hourlyForecast" className={styles.clickCard}>
+          <div className={styles.tempCard}>
             <p>Temperature:{" "} {unit === "imperial" ? `${cityWeatherData.current.temp}°F` : `${celsius(cityWeatherData.current.temp).toFixed(1)}°C`}</p>
             <p>Feels Like:{" "} {unit === "imperial" ? `${cityWeatherData.current.feels_like}°F` : `${celsius(cityWeatherData.current.feels_like).toFixed(1)}°C`}</p>
             <p>Description: {cityWeatherData.current.weather[0]?.description}</p>
@@ -33,16 +35,15 @@ function WeatherDetails() {
             <p>Sunrise: {time(cityWeatherData.current.sunrise)}</p>
             <p>Sunset: {time(cityWeatherData.current.sunset)}</p>
           </div>
-        ) : (
-          <p>No weather information available. Please select a city or try again.</p>
-        )}
-        <button onClick={changeUnit}>
-          Change to {unit === "imperial" ? "Celsius" : "Fahrenheit"}
-        </button>
-      </div>
-    );
-  }
-  export default WeatherDetails;
+        </Link>
+      ) : (
+        <p>Weather information is currently not available. Please select a city and try again.</p>
+      )}
+      <button onClick={changeUnit} className={styles.convertButton}>
+        Change to {unit === "imperial" ? "Celsius" : "Fahrenheit"}
+      </button>
+    </div>
+  );
+}
 
-
-  
+export default WeatherDetails;

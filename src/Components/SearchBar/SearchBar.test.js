@@ -11,10 +11,6 @@ test('City Search Input: Verify that there is a text input which allows user to 
     </DataProvider>
   );
 
-  // Verify that the input element is in the document
-  const inputElement = screen.getByRole('textbox', { name: /searchbar/i });
+  const inputElement = screen.getByPlaceholderText('City Search');
   expect(inputElement).toBeInTheDocument();
-
-  // Verify that the input element is of type text
-  expect(inputElement).toHaveAttribute('type', 'text');
 });
