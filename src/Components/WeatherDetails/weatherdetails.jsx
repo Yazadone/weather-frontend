@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { DataContext } from "../DataProvider/dataProvider";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import styles from './weatherdetails.module.css';
 
 function WeatherDetails() {
@@ -19,9 +19,11 @@ function WeatherDetails() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.heading}>
       <h2>
         {selectedCity?.length > 0 ? `Weather information for ${selectedCity[0]?.name || "this location"}` : "No city selected, please search and select a city."}
       </h2>
+      </div>
       {cityWeatherData?.current ? (
         <Link to="/hourlyForecast" className={styles.clickCard}>
           <div className={styles.tempCard}>
