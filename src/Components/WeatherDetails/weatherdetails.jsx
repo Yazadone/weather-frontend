@@ -16,8 +16,6 @@ function WeatherDetails() {
       setUnit(unit === "imperial" ? "metric" : "imperial");
     };
 
-    console.log("Selected City:", selectedCity);
-    console.log("City Weather Data:", cityWeatherData);
    
     return (
       <div>
