@@ -5,6 +5,7 @@ import { DataContext } from './dataProvider';
 import SearchBar from '../SearchBar/searchBar';
 
 
+
 global.fetch = jest.fn().mockResolvedValue({
     json: () => Promise.resolve({ data: "Sample Data" }),
 });

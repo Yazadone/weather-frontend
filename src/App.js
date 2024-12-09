@@ -1,3 +1,4 @@
+import React from "react";
 import SearchBar from "./Components/SearchBar/searchBar";
 import { DataProvider } from "./Components/DataProvider/dataProvider";
 import WeatherDetails from "./Components/WeatherDetails/weatherdetails";

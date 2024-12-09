@@ -1,5 +1,5 @@
- import { createContext, useState, useEffect } from 'react';
-
+import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const DataContext = createContext();
 
@@ -65,5 +65,9 @@ const DataProvider = ({ children }) => {
         </DataContext.Provider>
     );
 };
+
+DataProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+}
 
 export { DataContext, DataProvider };

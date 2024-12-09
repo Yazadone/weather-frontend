@@ -5,6 +5,7 @@ import cors from "cors";
 
 dotenv.config();
 const app = express();
+// eslint-disable-next-line no-undef
 const api = process.env.OpenWeather_API
 
 app.use(

@@ -3,6 +3,7 @@ import { render, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { DataProvider, DataContext } from './dataProvider';
 
+
 global.fetch = jest.fn();
 
 beforeEach(() => {
