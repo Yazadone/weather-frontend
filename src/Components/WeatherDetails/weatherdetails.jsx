@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { DataContext } from "../DataProvider/dataProvider";
 import { Link } from "react-router";
-import styles from './weatherdetails.module.css';
+import styles from "./weatherdetails.module.css";
 
 function WeatherDetails() {
   const { selectedCity, cityWeatherData } = useContext(DataContext);
@@ -22,7 +22,9 @@ function WeatherDetails() {
       <div className={styles.heading}>
         <h2>
           {selectedCity?.length > 0
-            ? `Weather information for ${selectedCity[0]?.name || "this location"}`
+            ? `Weather information for ${
+                selectedCity[0]?.name || "this location"
+              }`
             : "No city selected, please search and select a city."}
         </h2>
       </div>
@@ -41,7 +43,9 @@ function WeatherDetails() {
                 ? `${Math.round(cityWeatherData.current.feels_like)}°F`
                 : `${celsius(cityWeatherData.current.feels_like)}°C`}
             </p>
-            <p>Description: {cityWeatherData.current.weather[0]?.description}</p>
+            <p>
+              Description: {cityWeatherData.current.weather[0]?.description}
+            </p>
             <p>Humidity: {cityWeatherData.current.humidity}%</p>
             <p>
               Wind Speed: {cityWeatherData.current.wind_speed}{" "}

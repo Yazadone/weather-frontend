@@ -18,17 +18,16 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.jest,
-        global: true, 
+        global: true,
       },
     },
-    
+
     rules: {
       "no-undef": "off",
     },
   },
-  
+
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
   pluginJs.configs.recommended,
 ];
-

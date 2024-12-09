@@ -14,7 +14,7 @@
   padding: 20px;
   border: 2px solid #ccc;
   border-radius: 8px;
-  background-color: inherit; 
+  background-color: rgb(255, 255, 255, 0.3); 
   box-shadow: 0 4px 8px black;
   display: flex;
   flex-direction: column; 

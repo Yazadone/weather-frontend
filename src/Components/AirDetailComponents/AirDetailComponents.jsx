@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { DataContext } from '../DataProvider/dataProvider';
-import styles from './airDetailsComponent.module.css';
+import React, { useContext } from "react";
+import { DataContext } from "../DataProvider/dataProvider";
+import styles from "./airDetailsComponent.module.css";
 
 const AirDetailsComponent = () => {
   const { cityWeatherData } = useContext(DataContext);
