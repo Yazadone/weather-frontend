@@ -7,19 +7,25 @@ import AirDetailsComponent from "./Components/AirDetailComponents/AirDetailCompo
 import SunDetailsComponent from "./Components/SunDetailsComponent/SunDetailsComponent";
 import image from "./Assets/images/background.jpg";
 import styles from "./App.module.css";
-import { Routes, Route } from "react-router-dom"; 
+import { Routes, Route } from "react-router"; 
 
 function App() {
   return (
     <DataProvider>
       <img className={styles.background} src={image} alt="Background" />
       <SearchBar />
+      <div className={styles.row_container}>
+      <div className={styles.left}>
       <Routes> 
         <Route path="/" element={<WeatherDetails />} />
         <Route path="/hourlyForecast" element={<HourlyForecast />} />
       </Routes>
+      </div>
+      <div className={styles.right}>
       <AirDetailsComponent />
       <SunDetailsComponent />
+      </div>
+      </div>
     </DataProvider>
   );
 }
